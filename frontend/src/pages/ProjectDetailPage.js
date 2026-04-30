@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { projectsAPI, tasksAPI, usersAPI } from '../utils/api';
+import { projectsAPI, tasksAPI } from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 import {
-  Plus, X, Users, Settings, Trash2, UserPlus,
-  Crown, User, Calendar, Flag, ChevronLeft, Edit2, Check
+  Plus, X, Users, Trash2, UserPlus,
+  Crown, User, Calendar, ChevronLeft
 } from 'lucide-react';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
@@ -102,7 +102,6 @@ function TaskCard({ task, onUpdate, onDelete, members, isAdmin }) {
 }
 
 function CreateTaskModal({ project, members, onClose, onCreated }) {
-  const { user } = useAuth();
   const [form, setForm] = useState({
     title: '', description: '', priority: 'medium',
     assignee: '', dueDate: '', status: 'todo'
@@ -281,7 +280,6 @@ export default function ProjectDetailPage() {
   const [loading, setLoading] = useState(true);
   const [showCreateTask, setShowCreateTask] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
-  const [createInCol, setCreateInCol] = useState('todo');
 
   const load = useCallback(async () => {
     try {
@@ -348,7 +346,7 @@ export default function ProjectDetailPage() {
           <button className="btn btn-secondary btn-sm" onClick={() => setShowMembers(true)}>
             <Users size={14} /> Team ({project.members?.length})
           </button>
-          <button className="btn btn-primary btn-sm" onClick={() => { setCreateInCol('todo'); setShowCreateTask(true); }}>
+          <button className="btn btn-primary btn-sm" onClick={() => setShowCreateTask(true)}>
             <Plus size={14} /> Add Task
           </button>
         </div>
@@ -363,7 +361,7 @@ export default function ProjectDetailPage() {
               <span className="kanban-count">{tasksByCol[col.key].length}</span>
               <button
                 className="btn btn-ghost btn-sm"
-                onClick={() => { setCreateInCol(col.key); setShowCreateTask(true); }}
+                onClick={() => setShowCreateTask(true)}
                 style={{ marginLeft: 'auto', padding: '2px 4px' }}
               >
                 <Plus size={14} />

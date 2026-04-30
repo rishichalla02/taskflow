@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { tasksAPI } from '../utils/api';
-import { CheckSquare, Search, Calendar, AlertCircle, Filter } from 'lucide-react';
+import { CheckSquare, Search, Calendar, AlertCircle } from 'lucide-react';
 import { format, isAfter } from 'date-fns';
 import toast from 'react-hot-toast';
 import './TasksPage.css';
