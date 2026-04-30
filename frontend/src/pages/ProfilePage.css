@@ -1,0 +1,67 @@
+.profile-page { max-width: 800px; }
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.profile-avatar-wrap { margin-bottom: 0.5rem; }
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+
+.profile-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.profile-email {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  color: var(--text-3);
+}
+
+.profile-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.875rem;
+  background: var(--accent-glow);
+  border: 1px solid rgba(124,106,247,0.2);
+  border-radius: 20px;
+  color: var(--accent-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.profile-since { font-size: 0.75rem; color: var(--text-3); }
+
+@media (max-width: 650px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .profile-card { padding: 1.5rem; }
+}
